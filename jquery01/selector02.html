@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+</head>
+<body>
+  <script>
+    document.addEventListener("DOMContentLoaded", function(){
+
+
+    });
+    //javascript-> jQuery
+    //DOM객체가 완전히 올려지면 코드가 온전하게 실행이된다 ..? 
+    //jQuery(document).ready(function(){ // jQuery를 $로 표시해서 사용할수있다.
+      //전체 선택자
+    $(document).ready(function(){ // jQuery를 $로 표시해서 사용할수있다.
+        $("*").css('border', '1px solid blue'); //*는 어디서 쓰든 전체를 뜻함
+
+        //아이디 선택자
+        $("#title").css("background-color", "gray").css("border", "2px solid black"); //제쿼리안에 ""안에 값을 넘겨줌 #을 넣는 이유는 id라서.
+        //css를 하나만 쓸수있는것은 아니다.
+
+
+        //클래스 선택자
+        let classTags = $(".blue"); // ""안에 .(클래스)를 넘겨줌
+        for(let i=0; i<classTags.length; i++){
+          classTags[i].textContent += i;
+        }
+        $(".blue").text("중복"); //jQuery로 동일한 값을 설정할꺼면 바로 메소드를 쓰면됨
+        // 클래스 blue를 가지고있는 모든 태그에 적용이 됨
+        // 각각 주고싶으면 자바스크립트에서 배열에 넣어 for문을 돌려야함 ..
+
+
+        //태그 선택자
+        $("h3").text("직접 선택자로 다시 변경") //태그이름만 넘겨줘도 됨 현재 존재하는 태그중에서 검색해옴 중복이 가능해서 여러개가있다면 전부다 변경됨
+
+
+        //그룹선택자
+        $("#title, .blue, h4").css("color", "green");
+
+
+        //종속선택자(사실상 직접선택자)
+        $('h1.blue').text("종속 선택자로 선택"); //태그와 클래스or아이디를 선택할때는 공백없이 써야함. 만약 공백을 넣으면 전혀다른 값을 가져옴.
+        $('h2#title').text("테스트입니다");
+    });
+  </script>
+    <h1 class="blue">제이쿼리</h1>
+    <h2 id="title">선택자</h2>
+    <h3 class="blue">직접 선택자</h3>
+    <h4>그룹 선택자</h4>
+    
+</body>
+</html>

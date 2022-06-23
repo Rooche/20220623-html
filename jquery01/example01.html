@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+</head>
+
+<body>
+  <form id="info">
+    <div>
+      <label for="user_name">이름</label>
+      <input type="text" name="user_name" id="user_name">
+    </div>
+    <div>
+      <label for="user_dept">소속</label>
+      <select name="user_dept" id="user_dept">
+        <option value="student">학생</option>
+        <option value="teacher">교수</option>
+      </select>
+    </div>
+    <div id="hobby">
+      <label for="user_hobby">취미</label>
+      <input type="checkbox" name="user_hobby" value="reading">독서
+      <input type="checkbox" name="user_hobby" value="movie">영화
+      <input type="checkbox" name="user_hobby" value="writing">글쓰기
+    </div>
+    <button type="button" name="input" id="input" onclick="javascript:clickEven2()">등록</button>
+  </form>
+  <div id="show">
+    <table style="border: 1px solid black;">
+      <thead>
+        <tr>
+          <th>이름</th>
+          <th>소속</th>
+          <th>취미1</th>
+          <th>취미2</th>
+          <th>취미3</th>
+        </tr>
+      </thead>
+      <tbody>
+
+      </tbody>
+    </table>
+
+    <script>
+      function clickEvent() {
+        let name = document.getElementById('user_name').value;            
+      let dept = document.querySelector('select[name="user_dept"] option:checked').textContent;      
+      let hobby = document.querySelectorAll('input[name="user_hobby"]:checked');      
+
+      let tbody = document.getElementsByTagName('tbody')[0];
+      let tr = document.createElement('tr');
+      let td = document.createElement('td');
+      td.textContent = name;
+      tr.appendChild(td);
+
+      td = document.createElement('td')
+      td.textContent = dept;
+      tr.appendChild(td);
+
+      for(let i = 0; i<3; i++) {
+        td = document.createElement('td');
+        if(i<hobby.length) {
+          td.textContent = hobby[i].value;          
+        }
+        tr.appendChild(td);
+      }
+      tbody.appendChild(tr);
+
+      }
+
+      
+      function clickEven(){
+        let name = $('#user_name').val();
+        let dept = $('#user_dept :selected').text();
+        let hobbies = $('#info>div:last :checked');
+
+        let tbody = $('tbody:first');
+
+      let tr = document.createElement('tr');
+      let td = document.createElement('td');
+      td.textContent = name;
+      tr.appendChild(td);
+
+      td = document.createElement('td')
+      td.textContent = dept;
+      tr.appendChild(td);
+
+      for(let i = 0; i<3; i++) {
+        td = document.createElement('td');
+        if(i<hobbies.length) {
+          td.textContent = hobbies[i].value;          
+        }
+        tr.appendChild(td);
+      }
+      tbody.append(tr);
+      }
+
+      function clickEven2(){
+        let name = $('#user_name').val();
+        let dept = $('#user_dept :selected').text();
+        let hobbies = $('#info>div:last :checked');
+
+        let tbody = $('tbody:first');
+
+        let tr = $('<tr/>');
+        tr.append($('<td/>').text(name));
+        tr.append($('<td/>').text(dept));
+
+        for(let i=0; i<3; i++){
+          let td = $('<td/>');
+          if(i < hobbies.length){
+            $(td).text(hobbies[i].value);
+          }
+          tr.append(td);
+        }
+        tbody.append(tr);
+      }
+      //이 코드 자체를 자바스크립트로 하게되면 각각의 메소드를 불러와야한다.
+      //원래 이렇게 코드가 나올수밖에 없다 ~
+      </script>
+</body>
+
+</html>

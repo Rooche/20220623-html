@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+</head>
+<body>
+  <div id="wrap">
+    <p>내용1</p>
+    <p style="display: none;">내용2</p>
+    <p>내용3</p>
+  </div>
+  <form action="#">
+    <p id="zone1">
+      <select name="course" id="course">
+        <option value="opt1">옵션1</option>
+        <option value="opt2" selected>옵션2</option>
+        <option value="opt3">옵션3</option>
+      </select>
+    </p>
+    <p id="zone2">
+      <input type="checkbox" name="hobby1" value="독서"> 독서
+      <input type="checkbox" name="hobby2" value="자전거" checked> 자전거
+      <input type="checkbox" name="hobby3" value="등산" checked> 등산
+    </p>
+    <p id="zone3">
+      <input type="radio" name="gender" value="male" checked> 남성
+      <input type="radio" name="gender" value="female"> 여성
+    </p>
+  </form>
+  <script>
+    // hidden, visible
+    $('#wrap p:hidden').css("display", "block");
+    $('#wrap p:visible').css("display", "none");
+
+    // selected -> select 박스의 선택된 값
+    let content = $('#course :selected').val(); //선택된 값이 뭔지 알고싶을때는 val을 쓴다.
+    console.log(content);
+
+    //checked -> checkbox, radio의 선택된 값
+    let tags = $('#zone2 :checked');
+    for(let i=0; i<tags.length; i++){
+      console.log(tags[i].value);
+    }
+
+    content = $('#zone3 :checked').val();
+    console.log(content);
+  </script>
+</body>
+</html>

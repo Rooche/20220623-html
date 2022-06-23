@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+</head>
+<body>
+  <div>
+    <h1>탐색 선택자</h1>
+    <ul id="menu">
+      <li>내용1</li>
+      <li>내용2</li>
+      <li>내용3</li>
+      <li>내용4</li>
+      <li>내용5</li>
+    </ul>
+  </div>
+  
+  <script>
+      $($('#menu > li')[3]).text("변경");
+      //$('li').next().next().next().text("변경성공").next().text("내용5");
+      //first, last
+      $('#menu li:first').text("first 변경");
+      $('#menu li').first().css("color", "red");
+
+      $('#menu li:last').text("라스트로 변경");
+      $('#menu li').last().css("color", "blue");
+
+      //even : 홀수번째 요소, odd : 짝수번째 요소
+      let evenTag = $('#menu li:odd');
+      for(let i=0; i < evenTag.length; i++){
+        $(evenTag[i]).text(2*i);
+      }
+
+      //eq(), lt(), gt() -> 인덱스를 이용
+      $('#menu li:eq(3)').text("내용을 수정합니다.");
+      $('#menu li').eq(3).css("color", "orange");
+
+      $('li:lt(2)').text("lt에 해당"); // lt=>앞에서 몇번째까지 변경, gt=>뒤에서 몇번째까지변경
+  </script>
+
+  <div>
+    <h1>내용 선택자 2</h1>
+    <ol>
+      <li>내용1-1</li>
+      <li>내용1-2</li>
+      <li>내용1-3</li>
+    </ol>
+    <ol>
+      <li>내용2-1</li>
+      <li>내용2-2</li>
+      <li>내용2-3</li>
+    </ol>
+    <ol>
+    <li>내용</li>
+  </ol>
+  </div>
+
+  <script>
+    //first-of-type, last-of-type
+    $('li:first-of-type').text("첫번째"); // first-of-type은 동일한 구조에서 똑같은 위치에 값을 줘야할때 이런식으로 쓴다.
+                                          // 다른 태그안에 묶여져있어도(예를 들면 ul, ol일때) 전부다 바뀐다
+    $('li:last-of-type').text("마지막"); // last-of-type는 각 무리 안에서 마지막 태그를 지적할때 쓴다
+
+    // nth-child
+    $('li:nth-child(1)').text("nth-child 첫번째"); // 첫번째 자식요소만 변경
+    $('li:nth-child(2n)').css("border", "1px solid black"); // 2의 배수만 변경
+
+    //only-child, slice(start index, end index)
+    $('li:only-child').text("자식요소");
+
+    $('ol li').slice(1,3).css("background-color", "pink") // ol밑 li에 1번째보다 크고 3번째와 같거나 작은 행에 css를 적용
+  </script>
+</body>
+</html>

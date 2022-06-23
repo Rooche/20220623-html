@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+</head>
+<body>
+  <h1 id="title">제목</h1>
+  <script>
+    //html은 위에서부터 아래로 내려옴. 그래서 위쪽에 cdn(현재는 타이틀밑에 있는 script 구글을 말하는것)을 넣어둬야함
+    //jquery는 검색해서 해당객체를 가져옴
+    let tag = jQuery('#title'); //라이브러리는 기본적으로 함수. 여기서 Q를 대문자로 적어야한다
+    //class는 .이고 id는 #이므로 jQuery에 title을 들고와 태그에 넣음
+    tag.css("color", "red"); // 태그에 css속성을 넣어 색을 빨간색으로 바꿈
+
+    let jsTag = document.getElementById('title');
+    jsTag.style.color = "blue";
+  </script>
+</body>
+</html>

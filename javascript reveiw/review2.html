@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    .red{color: red;}
+    .blue{color: blue;}
+  </style>
+</head>
+<body>
+  <div>
+    <h1>Cities</h1>
+    <ul>
+      <li id="one" class="red">Seoul</li>
+      <li id="two" class="red">London</li>
+      <li id="three" class="red">NewYork</li>
+      <li id="four">Tokyo</li>
+    </ul>
+    <script>
+      //한번에 클래스를 red=>blue로 바꾸기
+      //1. id로 요소를 검색
+      let idTag = document.getElementById('one');
+      idTag.className = "blue";
+      idTag = document.getElementById('two');
+      idTag.className = "blue";
+      idTag = document.getElementById('three');
+      idTag.className = "blue";
+
+      //2. tag로 요소를 검색
+      let tags = document.getElementsByTagName('li'); // 태그를 할때는 명확하게 해야함
+      for(let i=0; i<tags.length; i++) {
+        tags[i].className = "red";
+      };
+
+      //3. className으로 요소를 검색
+      //4. cssSelector로 요소를 검색
+    </script>
+  </div>
+</body>
+</html>

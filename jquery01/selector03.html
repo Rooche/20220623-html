@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+</head>
+<body>
+  <script>
+    $(document).ready(function(){
+      //부모선택자
+      $('#inner_wrap').parent().css("border", "1px solid black");
+
+      //하위 요소선택자
+      $('#wrap h1, h2').css("color", "blue");
+
+      //자식 요소 선택자
+     // $('#inner_wrap > h1').text("자식 요소로 선택"); // 동일한 구조가있는 태그에서 건들수가있음 (결과값은 h1내용1만 바뀜)
+      $('div > h1').text("자식 요소로 선택"); // 동일한 구조가있는 태그에서 건들수가있음 (결과값은 h1내용1이랑 h1하위요소1이 바뀜)
+      $('div').children('h1'); //자식요소를 전부 선택할땐 children(복수).. 보통은 하나만 지정한다고 함
+                              // child는 단수
+    });
+  </script>
+  <div id="wrap">
+    <div id="inner_wrap">
+      <h1>내용1</h1>
+      <h2>내용2</h2>
+      <h3>내용3</h3>
+      <p>내용</p>
+      <div>
+        <h1>하위 요소1</h1>
+        <h2>하위 요소2</h2>
+      </div>
+    </div>
+  </div>
+
+<script>
+  $(function(){
+    //형(이전) 요소 선택자
+    $('.txt').prev().css("background-color", "#0ff").css("border", "2px solid #f00"); // 나를 기점으로 해서 옆에 있는 이전 요소들 선택 : prev
+    $('.txt').prevAll().text("이전 요소들"); //선택한 요소 이전의 모든 요소를 선택 : prevAll 
+
+    //동생(다음) 요소 선택자
+    $('.txt').next().next().css("color", "red"); // 나를 기점으로 해서 옆에 있는 다음 요소들 선택 : next
+    $('.txt').nextAll().text("다음 요소들") //선택한 요소 다음의 모든 요소를 선택 : nextAll
+    
+    $('.txt + p').text("선택"); //+를 이용하면 해당되는 태그를 이용해서 바로 다음에 있는 태그를 찾는다.
+
+    
+    //범위제한까지
+    //지금 h1과 span을 가리키고 있는데 h1전까지 모든 요소들에게 적용을 한다는것
+    //그리고 span전까지
+    $('.txt').prevUntil('h1').css('border','10px solid red'); //유틸안에 내가 선택하고자하는 태그를 넘겨주면 된다.
+    $('.txt').nextUntil('span').css('border','10px solid pink');
+
+  });
+
+</script>
+  <div id="content">
+    <h1>인접 관계 선택자</h1>
+    <p>내용1</p>
+    <p class="txt">내용2</p>
+    <p>내용3</p>
+    <p>내용4</p>
+    <span>추가한 내용</span>
+  </div>
+
+  <script>
+    $(document).ready(function(){
+      //상위 요소 선택자
+      $('.txt2').parents('section').css("border", "3px solid yellow");
+
+      //가장 가까운 상위 요소 선택자
+      $('.txt1').closest('div').css("border", "2px solid red"); //중간에 e가 빠진 closeset이 아니라 closest
+
+      //전체 형제 요소 선택자
+      //위치와 상관없이 나를 기반으로 해서 동급의 요소를 모두 가지고 오는게 siblings
+      $('h1').siblings().css("background-color", "black");
+    });
+  </script>
+
+  <div>
+    <h1 class="title">선택자</h1>
+    <section>
+      <div>
+        <p class="txt1">내용</p>
+      </div>
+    </section>
+    <section>
+      <div>
+        <p class="txt2">내용</p>
+      </div>
+    </section>
+  </div>
+</body>
+</html>

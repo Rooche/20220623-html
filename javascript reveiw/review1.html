@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <ul>
+    <li id="apple">Apple</li>
+    <li id="banana">Banana</li>
+    <li id="orenge">Orenge</li>
+  </ul>
+  <script>
+    let ulTag = document.getElementsByTagName('ul')[0]; //해당태그를 검색해옴
+    let liTag = document.createElement('li');
+    liTag.innerText = "추가";
+    ulTag.appendChild(liTag);
+    //변수연산자, 반복문, 제어문 등 자바스크립트 가장 큰 특징은 html 페이지내에서 존재하는 태그들 내에서
+    //컨트롤이 가능하다는것 이게 가능한 이유는 html은 읽으면서 브라우저상에서 돔(DOM)객체라는 형태로 랜더링하기 때문에.
+
+  </script>
+</body>
+</html>
